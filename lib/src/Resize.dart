@@ -11,14 +11,10 @@ class Resize extends StatelessWidget {
   /// [Size] of the device
   final Size size;
 
-  /// Boolean to indicate text scaling
-  final bool allowtextScaling;
-
   Resize({
     required this.builder,
     this.size = ResizeUtil.defaultSize,
     this.baseForREM = 16.0,
-    this.allowtextScaling = true,
     Key? key,
   }) : super(key: key);
 

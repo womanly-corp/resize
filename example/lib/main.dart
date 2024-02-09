@@ -8,7 +8,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // Initialize ResizeUtil using Resize()
     return Resize(
-      allowtextScaling: true,
       builder: () {
         // print(ResizeUtil().deviceType);
         // print(ResizeUtil().orientation);
@@ -79,8 +78,8 @@ class MyApp extends StatelessWidget {
                     child: TextButton(
                       onPressed: () {},
                       style: TextButton.styleFrom(
+                        foregroundColor: Colors.white,
                         backgroundColor: Color(0xFFFF5555),
-                        primary: Colors.white,
                         elevation: 5.h,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.r),
