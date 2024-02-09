@@ -1,6 +1,7 @@
 import 'dart:math';
-import 'package:flutter/material.dart';
+
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/material.dart';
 import 'package:universal_io/io.dart' show Platform;
 
 class ResizeUtil {
@@ -11,7 +12,6 @@ class ResizeUtil {
   static late Size ui;
 
   /// Boolean to indicate text scaling
-  static late bool allowtextScaling = true;
 
   /// Screen width of the device
   static late double _screenWidth;
@@ -34,11 +34,9 @@ class ResizeUtil {
     Orientation orientation, {
     double base = 16.0,
     Size size = defaultSize,
-    bool allowtextScaling = true,
   }) {
     _orientation = orientation;
     ui = size;
-    allowtextScaling = allowtextScaling;
 
     /// Sets the device _screenWidth and _screenHeight
     _screenWidth = constraints.maxWidth;
@@ -83,9 +81,6 @@ class ResizeUtil {
   /// Gives the scale factor for the device
   double get scale => max(scaleW, scaleH);
 
-  /// Returns text scaling factor which will be later used for font size in [ResizeUtil.scalarPixel]
-  double get textScaleFactor => WidgetsBinding.instance!.window.textScaleFactor;
-
   /// Gives the responsive height
   double height(num input) => input * scaleH;
 
@@ -99,13 +94,12 @@ class ResizeUtil {
   double viewWidth(num input) => input * (_screenWidth / 100);
 
   /// Returns font size in rem based on the input and base size
-  double rem(num input) => input * _base * textScaleFactor;
+  double rem(num input) => input * _base;
 
   /// Gives the font size in scalarPixels based on the input
   /// If [allowtextScaling] is set true it will returns a scalable font size
   /// If [allowtextScaling] is set false it will returns a non scalable font size
-  double scalarPixel(num input) =>
-      allowtextScaling ? input * scale * textScaleFactor : input * scale;
+  double scalarPixel(num input) => input * scale;
 
   /// Return the radius for rounded corners
   double radius(num input) => input * scale;

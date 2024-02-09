@@ -33,7 +33,6 @@ class Resize extends StatelessWidget {
               orientation,
               base: baseForREM,
               size: size,
-              allowtextScaling: allowtextScaling,
             );
             return builder();
           }
